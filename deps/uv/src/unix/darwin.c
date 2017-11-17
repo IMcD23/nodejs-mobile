@@ -185,8 +185,9 @@ int uv_cpu_info(uv_cpu_info_t** cpu_infos, int* count) {
   }
 
   size = sizeof(cpuspeed);
-  if (sysctlbyname("hw.cpufrequency", &cpuspeed, &size, NULL, 0))
-    return -errno;
+  if (sysctlbyname("hw.cpufrequency", &cpuspeed, &size, NULL, 0)) {
+    cpuspeed = 0;
+  }
 
   if (host_processor_info(mach_host_self(), PROCESSOR_CPU_LOAD_INFO, &numcpus,
                           (processor_info_array_t*)&info,
