@@ -2360,7 +2360,7 @@ static void Exit(const FunctionCallbackInfo<Value>& args) {
     }
 #endif
   WaitForInspectorDisconnect(Environment::GetCurrent(args));
-  exit(args[0]->Int32Value());
+  //exit(args[0]->Int32Value());
 }
 
 
